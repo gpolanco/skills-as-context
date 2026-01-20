@@ -288,6 +288,7 @@ pnpm tsc --noEmit
 ## Resources
 
 - **Architecture Deep Dive**: [reference/architecture.md](reference/architecture.md)
+- **Typed Routing System**: [reference/routing-system.md](reference/routing-system.md)
 - **React Patterns**: See `react-19` skill
 - **Project Structure**: See `structuring-projects` skill
 - **Official Docs**: [Next.js Documentation](https://nextjs.org/docs)

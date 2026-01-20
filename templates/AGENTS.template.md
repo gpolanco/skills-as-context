@@ -1,164 +1,187 @@
-# AI Agent Guidelines for [PROJECT_NAME]
+# {Project Name} - AI Agent Ruleset
 
-Instructions for AI coding assistants working on this project.
-
----
-
-## Skills Reference
-
-Use these skills for detailed patterns on-demand:
-
-### Generic Skills
-
-| Skill                  | Description                        | URL                                              |
-| ---------------------- | ---------------------------------- | ------------------------------------------------ |
-| `structuring-projects` | Project structure (features, DDD)  | [SKILL.md](skills/structuring-projects/SKILL.md) |
-| `react-19`             | React 19 + React Compiler patterns | [SKILL.md](skills/react-19/SKILL.md)             |
-| `typescript`           | Strict types, const patterns       | [SKILL.md](skills/typescript/SKILL.md)           |
-| `nextjs-16`            | App Router, Server Components      | [SKILL.md](skills/nextjs-16/SKILL.md)            |
-| `tailwind-4`           | cn() utility, responsive patterns  | [SKILL.md](skills/tailwind-4/SKILL.md)           |
-
-<!-- Add more generic skills as needed -->
-
-### Project-Specific Skills
-
-| Skill             | Description   | URL                                |
-| ----------------- | ------------- | ---------------------------------- |
-| `[project-skill]` | [Description] | [SKILL.md](skills/[name]/SKILL.md) |
-
-<!-- Add your project-specific skills here -->
+> **Skills Reference**: For detailed patterns, use these skills:
+>
+> - [`structuring-projects`](skills/structuring-projects/SKILL.md) - Feature-based architecture, DDD
+> - [`react-19`](skills/react-19/SKILL.md) - No useMemo/useCallback, React Compiler
+> - [`developing-with-nextjs`](skills/developing-with-nextjs/SKILL.md) - App Router, caching, middleware
+> - [`tailwind-4`](skills/tailwind-4/SKILL.md) - cn() utility, no var() in className
+> - [`typescript`](skills/typescript/SKILL.md) - Const types, flat interfaces
+> - [`zod-4`](skills/zod-4/SKILL.md) - Runtime validation patterns
+> - [`{project-skill}`](skills/{project-skill}/SKILL.md) - Project-specific patterns
 
 ---
 
 ## Auto-invoke Skills
 
-When performing these actions, ALWAYS load the corresponding skill FIRST:
+When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 
-| Action                       | Skill                  |
-| ---------------------------- | ---------------------- |
-| Creating features or modules | `structuring-projects` |
-| Writing React components     | `react-19`             |
-| Creating TypeScript types    | `typescript`           |
-| Building Next.js pages       | `nextjs-16`            |
-| Styling with Tailwind        | `tailwind-4`           |
-
-<!-- Add project-specific triggers -->
+| Action                              | Skill                    |
+| ----------------------------------- | ------------------------ |
+| App Router / Server Actions         | `developing-with-nextjs` |
+| Creating Zod schemas                | `zod-4`                  |
+| Organizing project structure        | `structuring-projects`   |
+| Styling with Tailwind               | `tailwind-4`             |
+| Writing React components            | `react-19`               |
+| Writing TypeScript types/interfaces | `typescript`             |
+| Working on {project} components     | `{project-skill}`        |
 
 ---
 
-## Project Context
+## CRITICAL RULES - NON-NEGOTIABLE
 
-<!-- Customize this section for your project -->
+### React
 
-**Tech Stack:**
+- ALWAYS: `import { useState, useEffect } from "react"`
+- NEVER: `import React`, `import * as React`
+- NEVER: `useMemo`, `useCallback` (React Compiler handles optimization)
 
-- Frontend: Next.js 16, React 19, Tailwind 4
-- Backend: [Your backend tech]
-- Database: [Your database]
-- Testing: [Your testing tools]
+### Types
 
-**Architecture:**
+- ALWAYS: `const X = { A: "a", B: "b" } as const; type T = typeof X[keyof typeof X]`
+- NEVER: `type T = "a" | "b"` (direct union types)
 
-- [Describe your architecture: feature-based, DDD, etc.]
-- [Key structural decisions]
+### Interfaces
 
-**Structure:**
+- ALWAYS: One level depth only; object property → dedicated interface
+- ALWAYS: Reuse via `extends`
+- NEVER: Inline nested objects
+
+### Styling
+
+- Single class: `className="bg-slate-800 text-white"`
+- Merge multiple: `className={cn(BASE_STYLES, variant && "variant-class")}`
+- Dynamic values: `style={{ width: "50%" }}`
+- NEVER: `var()` in className, hex colors in className
+
+### Scope Rule
+
+- Used 2+ places → shared folder (`lib/`, `types/`, `hooks/`, `components/shared/`)
+- Used 1 place → keep local in feature directory
+
+---
+
+## DECISION TREES
+
+### Component Placement
 
 ```
-[project-root]/
-├── src/
-│   ├── app/              # [Description]
-│   ├── features/         # [Description]
-│   └── ...
-├── tests/                # [Description]
-└── ...
+New component? → shadcn/ui + Tailwind first
+Used 1 feature? → features/{feature}/components/
+Used 2+ features? → features/shared/components/
+Needs state/hooks? → "use client"
+Server component? → No directive (default)
+```
+
+### Code Location
+
+```
+Server action       → features/{feature}/actions/
+Data transform      → features/{feature}/lib/
+Types (shared 2+)   → features/shared/types/
+Types (local 1)     → features/{feature}/types/
+Utils (shared 2+)   → features/shared/lib/
+Utils (local 1)     → features/{feature}/lib/
+Hooks (shared 2+)   → features/shared/hooks/
+Hooks (local 1)     → features/{feature}/hooks/
 ```
 
 ---
 
-## Development Rules
+## PATTERNS
 
-### ALWAYS
+### Server Component (Default)
 
-- Follow the structure defined in `structuring-projects` skill
-- Use TypeScript strict mode
-- Validate inputs with Zod
-- Write tests for new features
-- Use feature-based organization
-- Export via public APIs (`index.ts`)
+```typescript
+export default async function Page() {
+  const data = await fetchData();
+  return <ClientComponent data={data} />;
+}
+```
 
-### NEVER
+### Server Action
 
-- Use `any` type without explicit justification
-- Put business logic in `app/` directory
-- Import feature internals directly
-- Skip error handling
-- Hardcode environment variables
+```typescript
+"use server";
 
-### DEFAULTS
+import { revalidatePath } from "next/cache";
 
-- Features are isolated modules
-- Shared code lives in `features/shared/`
-- Tests mirror `src/` structure in `/tests`
-- Use `@/` import alias
+export async function updateItem(formData: FormData) {
+  const validated = schema.parse(Object.fromEntries(formData));
+  await updateDB(validated);
+  revalidatePath("/items");
+}
+```
 
----
+### Form + Validation
 
-## Code Quality Standards
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-**Type Safety:**
+const schema = z.object({
+  email: z.string().email(),
+  name: z.string().min(1),
+});
 
-- Const types for literal values
-- No implicit `any`
-- Strict null checks
-
-**Testing:**
-
-- Unit tests for logic
-- Integration tests for features
-- E2E tests for critical flows
-
-**Styling:**
-
-- Use design system tokens
-- Mobile-first responsive
-- Dark mode compatible
+const form = useForm({ resolver: zodResolver(schema) });
+```
 
 ---
 
-## Contribution Workflow
+## TECH STACK
 
-1. **Understand requirements** (read related skills)
-2. **Plan structure** (use `structuring-projects`)
-3. **Implement** (follow skill patterns)
-4. **Test** (write tests first when possible)
-5. **Document** (update README, add comments)
-6. **Review** (self-review against skills)
+```
+Next.js {version} | React 19 | TypeScript {version}
+Tailwind 4 | shadcn/ui | Zod 4
+{Add project-specific dependencies}
+```
 
 ---
 
-## Common Commands
+## PROJECT STRUCTURE
+
+```
+src/
+├── app/                 # Next.js App Router (routing only)
+├── features/            # Feature modules
+│   ├── {feature}/
+│   │   ├── components/
+│   │   ├── actions/
+│   │   ├── hooks/
+│   │   └── types/
+│   └── shared/          # Cross-feature infrastructure
+│       ├── ui/
+│       ├── components/
+│       ├── hooks/
+│       └── types/
+├── config/              # App configuration
+└── styles/              # Global CSS
+
+tests/                   # Test files
+```
+
+---
+
+## COMMANDS
 
 ```bash
-# Development
-npm run dev
-
-# Testing
-npm test
-npm run test:e2e
-
-# Linting
-npm run lint
-npm run format
-
-# Build
-npm run build
+pnpm install
+pnpm dev
+pnpm build
+pnpm typecheck
+pnpm lint:fix
+pnpm test
 ```
 
 ---
 
-## Resources
+## QA CHECKLIST BEFORE COMMIT
 
-- [Project README](README.md)
-- [Skills Documentation](skills/README.md)
-- [Contributing Guide](CONTRIBUTING.md)
+- [ ] `pnpm typecheck` passes
+- [ ] `pnpm lint:fix` passes
+- [ ] All UI states handled (loading, error, empty)
+- [ ] No secrets in code (use `.env.local`)
+- [ ] Server-side validation present
+- [ ] Relevant tests pass

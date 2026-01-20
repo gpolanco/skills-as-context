@@ -270,6 +270,42 @@ Local references (Progressive Disclosure).
 
 ---
 
+## 4.5 Content Rules (Single Responsibility)
+
+Each skill must respect responsibility boundaries. Don't duplicate or overlap with other skills.
+
+### NEVER in a Skill
+
+- **No component definitions**: Only show API/method patterns. Let `react-19` handle component structure.
+- **No file structure decisions**: Only show code logic. Let `structuring-projects` handle where files go.
+- **No styling decisions**: Let `tailwind-4` handle CSS patterns.
+- **No duplicate content**: If it's in `reference/`, don't repeat in `SKILL.md`.
+
+### Code Examples
+
+- **Show code ONLY when it IS the essence** (e.g., SQL for RLS, method calls for APIs).
+- **Add "When to use" context** for each pattern/example.
+- **Use comments like "Adjust path per your structure"** instead of prescriptive paths.
+
+### Reference Files
+
+- **reference/**: For detailed implementations (e.g., full auth workflow).
+- **SKILL.md**: Only rules + minimal quick reference.
+- **No overlap**: Content in reference should NOT be repeated in SKILL.md.
+
+### Cross-Skill References
+
+When a skill depends on another, add a note:
+
+```markdown
+**Cross-references:**
+
+- For React patterns → See `react-19` skill
+- For file structure → See `structuring-projects` skill
+```
+
+---
+
 ## 5. Validation Checklist (Quality Gate)
 
 The agent must verify these points before completion:

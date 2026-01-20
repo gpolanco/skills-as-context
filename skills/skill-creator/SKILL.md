@@ -32,11 +32,22 @@ Use this skill to transform raw requests into structured `agent-skills` folders 
 
 You must enforce the `skill-designer-core` standards during generation:
 
-- **ALWAYS** apply the **"Reusability Filter"**: Ask yourself "Will this be used at least 3 times?". If no, reject and propose a simple doc.
-- **ALWAYS** enforce **"Single Responsibility"**: One skill = One Job-to-be-done. Split monolithic requests.
-- **ALWAYS** use **"Progressive Disclosure"**: The `SKILL.md` must be < 500 lines. Move heavy schemas/templates to `assets/` and rules to `reference/`.
-- **NEVER** use external URLs in `reference/`. Copy content to local markdown files or point to existing repo docs.
-- **NEVER** generate a skill without a specific `Trigger` in the description.
+### ALWAYS
+
+- **Reusability Filter**: Ask "Will this be used at least 3 times?". If no, reject.
+- **Single Responsibility**: One skill = One job. Split monolithic requests.
+- **Progressive Disclosure**: `SKILL.md` < 500 lines. Move heavy content to `reference/`.
+- **Add "When to use"** context for each code example.
+- **Add cross-references** to related skills (e.g., "For React patterns → See `react-19`").
+
+### NEVER
+
+- **Never define component structure** - That's `react-19`'s responsibility.
+- **Never define file/folder locations** - That's `structuring-projects`'s responsibility.
+- **Never define styling patterns** - That's `tailwind-4`'s responsibility.
+- **Never duplicate content** between `SKILL.md` and `reference/`.
+- **Never use external URLs** in `reference/`. Copy content locally.
+- **Never generate a skill** without a specific `Trigger` in the description.
 
 ## Workflow (The Factory Process)
 

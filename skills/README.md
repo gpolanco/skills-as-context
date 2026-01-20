@@ -10,16 +10,17 @@ This directory contains AI Agent Skills following the [V5 Hybrid Model](skill-cr
 
 Reusable patterns for modern web development:
 
-| Skill                                        | Type         | Description                                          | Version | Status |
-| -------------------------------------------- | ------------ | ---------------------------------------------------- | ------- | ------ |
-| [structuring-projects](structuring-projects) | 📚 Knowledge | Project structure patterns (features, DDD, monorepo) | 1.0.0   | ✅     |
-| [react-19](react-19)                         | 📚 Knowledge | React 19 patterns with React Compiler                | 1.0.0   | ✅     |
-| [zod-4](zod-4)                               | 📚 Knowledge | Zod v4 runtime validation patterns                   | 1.0.0   | ✅     |
-| [typescript](typescript)                     | 📚 Knowledge | Strict types, const patterns, utility types          | 1.0.0   | ✅     |
-| [tailwind-4](tailwind-4)                     | 📚 Knowledge | cn() utility, Tailwind 4 patterns                    | 1.0.0   | ✅     |
-| nextjs-16                                    | 📚 Knowledge | App Router, Server Actions, streaming                | -       | 🚧     |
-| playwright                                   | 📚 Knowledge | Page Object Model, selectors                         | -       | 📝     |
-| zustand-5                                    | 📚 Knowledge | Persist, selectors, slices                           | -       | 📝     |
+| Skill                                            | Type         | Description                       | Trigger                        | Status |
+| ------------------------------------------------ | ------------ | --------------------------------- | ------------------------------ | ------ |
+| [structuring-projects](structuring-projects)     | 📚 Knowledge | Project structure (features, DDD) | "Organizing project structure" | ✅     |
+| [react-19](react-19)                             | 📚 Knowledge | React 19 + React Compiler         | "Writing React components"     | ✅     |
+| [zod-4](zod-4)                                   | 📚 Knowledge | Zod v4 validation patterns        | "Creating Zod schemas"         | ✅     |
+| [typescript](typescript)                         | 📚 Knowledge | Strict types, const patterns      | "Writing TypeScript"           | ✅     |
+| [tailwind-4](tailwind-4)                         | 📚 Knowledge | cn() utility, Tailwind 4          | "Styling with Tailwind"        | ✅     |
+| [developing-with-nextjs](developing-with-nextjs) | 📚 Knowledge | App Router, caching, middleware   | "Writing Next.js code"         | ✅     |
+| [supabase](supabase)                             | 📚 Knowledge | SSR auth, RLS, data access        | "Working with Supabase"        | ✅     |
+| playwright                                       | 📚 Knowledge | Page Object Model, selectors      | "Writing E2E tests"            | 📝     |
+| zustand-5                                        | 📚 Knowledge | Persist, selectors, slices        | "Managing client state"        | 📝     |
 
 **Legend**:
 
@@ -32,9 +33,9 @@ Reusable patterns for modern web development:
 
 Tools for creating and managing skills:
 
-| Skill                          | Type         | Description                                      | Version | Status |
-| ------------------------------ | ------------ | ------------------------------------------------ | ------- | ------ |
-| [skill-creator](skill-creator) | 📚 Knowledge | Create new AI agent skills following V5 standard | 2.0.0   | ✅     |
+| Skill                          | Type      | Description                     | Trigger          | Status |
+| ------------------------------ | --------- | ------------------------------- | ---------------- | ------ |
+| [skill-creator](skill-creator) | ⚙️ Hybrid | Create new skills (V5 standard) | "Create a skill" | ✅     |
 
 ---
 

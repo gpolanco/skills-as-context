@@ -40,15 +40,15 @@ build-a-skills/
 
 ### Generic Skills
 
-| Skill                  | Description                                 | Status     | URL                                              |
-| ---------------------- | ------------------------------------------- | ---------- | ------------------------------------------------ |
-| `structuring-projects` | Project structure (features, DDD, monorepo) | ✅ Ready   | [SKILL.md](skills/structuring-projects/SKILL.md) |
-| `react-19`             | React 19 + React Compiler patterns          | ✅ Ready   | [SKILL.md](skills/react-19/SKILL.md)             |
-| `zod-4`                | Zod v4 runtime validation patterns          | ✅ Ready   | [SKILL.md](skills/zod-4/SKILL.md)                |
-| `typescript`           | Strict types, const patterns                | ✅ Ready   | [SKILL.md](skills/typescript/SKILL.md)           |
-| `tailwind-4`           | cn() utility, Tailwind 4 API                | ✅ Ready   | [SKILL.md](skills/tailwind-4/SKILL.md)           |
-| `nextjs-16`            | App Router, Server Components               | 🚧 Planned | -                                                |
-| `playwright`           | Page Object Model, selectors                | 📝 Planned | -                                                |
+| Skill                    | Description                                 | Status     | URL                                                |
+| ------------------------ | ------------------------------------------- | ---------- | -------------------------------------------------- |
+| `structuring-projects`   | Project structure (features, DDD, monorepo) | ✅ Ready   | [SKILL.md](skills/structuring-projects/SKILL.md)   |
+| `react-19`               | React 19 + React Compiler patterns          | ✅ Ready   | [SKILL.md](skills/react-19/SKILL.md)               |
+| `zod-4`                  | Zod v4 runtime validation patterns          | ✅ Ready   | [SKILL.md](skills/zod-4/SKILL.md)                  |
+| `typescript`             | Strict types, const patterns                | ✅ Ready   | [SKILL.md](skills/typescript/SKILL.md)             |
+| `tailwind-4`             | cn() utility, Tailwind 4 API                | ✅ Ready   | [SKILL.md](skills/tailwind-4/SKILL.md)             |
+| `developing-with-nextjs` | App Router, Server Components               | ✅ Ready   | [SKILL.md](skills/developing-with-nextjs/SKILL.md) |
+| `playwright`             | Page Object Model, selectors                | 📝 Planned | -                                                  |
 
 ---
 
@@ -56,18 +56,19 @@ build-a-skills/
 
 When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 
-| Action                                      | Skill                  |
-| ------------------------------------------- | ---------------------- |
-| Creating new skills                         | `skill-creator`        |
-| Modifying existing skills                   | `skill-creator`        |
-| Organizing project structure                | `structuring-projects` |
-| Writing React 19 components                 | `react-19`             |
-| Creating Zod schemas                        | `zod-4`                |
-| Writing TypeScript types/interfaces         | `typescript`           |
-| Styling with Tailwind                       | `tailwind-4`           |
-| Reviewing skill quality against V5 standard | `skill-creator`        |
-| Adding DDD architecture to a project        | `structuring-projects` |
-| Setting up feature-based architecture       | `structuring-projects` |
+| Action                                      | Skill                    |
+| ------------------------------------------- | ------------------------ |
+| Creating new skills                         | `skill-creator`          |
+| Modifying existing skills                   | `skill-creator`          |
+| Organizing project structure                | `structuring-projects`   |
+| Writing React 19 components                 | `react-19`               |
+| Creating Zod schemas                        | `zod-4`                  |
+| Writing TypeScript types/interfaces         | `typescript`             |
+| Styling with Tailwind                       | `tailwind-4`             |
+| Writing Next.js code                        | `developing-with-nextjs` |
+| Reviewing skill quality against V5 standard | `skill-creator`          |
+| Adding DDD architecture to a project        | `structuring-projects`   |
+| Setting up feature-based architecture       | `structuring-projects`   |
 
 ---
 

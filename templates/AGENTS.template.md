@@ -4,7 +4,7 @@
 >
 > - [`structuring-projects`](skills/structuring-projects/SKILL.md) - Feature-based architecture, DDD
 > - [`react-19`](skills/react-19/SKILL.md) - No useMemo/useCallback, React Compiler
-> - [`developing-with-nextjs`](skills/developing-with-nextjs/SKILL.md) - App Router, caching, middleware
+> - [`nextjs`](skills/nextjs/SKILL.md) - App Router, caching, middleware
 > - [`tailwind-4`](skills/tailwind-4/SKILL.md) - cn() utility, no var() in className
 > - [`typescript`](skills/typescript/SKILL.md) - Const types, flat interfaces
 > - [`zod-4`](skills/zod-4/SKILL.md) - Runtime validation patterns
@@ -16,15 +16,15 @@
 
 When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 
-| Action                              | Skill                    |
-| ----------------------------------- | ------------------------ |
-| App Router / Server Actions         | `developing-with-nextjs` |
-| Creating Zod schemas                | `zod-4`                  |
-| Organizing project structure        | `structuring-projects`   |
-| Styling with Tailwind               | `tailwind-4`             |
-| Writing React components            | `react-19`               |
-| Writing TypeScript types/interfaces | `typescript`             |
-| Working on {project} components     | `{project-skill}`        |
+| Action                              | Skill                  |
+| ----------------------------------- | ---------------------- |
+| App Router / Server Actions         | `nextjs`               |
+| Creating Zod schemas                | `zod-4`                |
+| Organizing project structure        | `structuring-projects` |
+| Styling with Tailwind               | `tailwind-4`           |
+| Writing React components            | `react-19`             |
+| Writing TypeScript types/interfaces | `typescript`           |
+| Working on {project} components     | `{project-skill}`      |
 
 ---
 

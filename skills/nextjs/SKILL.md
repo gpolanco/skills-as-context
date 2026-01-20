@@ -1,5 +1,5 @@
 ---
-name: developing-with-nextjs
+name: nextjs
 description: >
   Enforces Next.js App Router patterns: routing, caching, middleware, and metadata.
   Trigger: Use when creating routes, configuring caching, setting up middleware, or handling Next.js-specific APIs.
@@ -209,17 +209,31 @@ export const config = {
 
 ---
 
-## Loading & Error States
+## Required Files
+
+Every Next.js App Router project should have:
+
+| File                | Purpose                         | Required          |
+| ------------------- | ------------------------------- | ----------------- |
+| `app/layout.tsx`    | Root layout with html/body      | ✅ Yes            |
+| `app/page.tsx`      | Home page (/)                   | ✅ Yes            |
+| `app/loading.tsx`   | Loading UI (Suspense boundary)  | Per route segment |
+| `app/error.tsx`     | Error boundary (`'use client'`) | Per route segment |
+| `app/not-found.tsx` | 404 page                        | Recommended       |
+| `middleware.ts`     | Auth/session handling           | If auth needed    |
+
+---
+
+## Loading & Error Signatures
 
 ```typescript
-// app/dashboard/loading.tsx
+// loading.tsx - No props, returns loading UI
 export default function Loading() {
-  return <DashboardSkeleton />;
+  return <Skeleton />;
 }
 
-// app/dashboard/error.tsx
-'use client'
-
+// error.tsx - Must be 'use client'
+'use client';
 export default function Error({
   error,
   reset,
@@ -227,12 +241,7 @@ export default function Error({
   error: Error;
   reset: () => void;
 }) {
-  return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button onClick={() => reset()}>Try again</button>
-    </div>
-  );
+  // Return error UI with reset button
 }
 ```
 
@@ -279,7 +288,6 @@ pnpm tsc --noEmit
 ## Resources
 
 - **Architecture Deep Dive**: [reference/architecture.md](reference/architecture.md)
-- **Templates**: [assets/](assets/) (page, loading, error)
 - **React Patterns**: See `react-19` skill
 - **Project Structure**: See `structuring-projects` skill
 - **Official Docs**: [Next.js Documentation](https://nextjs.org/docs)

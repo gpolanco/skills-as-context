@@ -10,17 +10,17 @@ This directory contains AI Agent Skills following the [V5 Hybrid Model](skill-cr
 
 Reusable patterns for modern web development:
 
-| Skill                                            | Type         | Description                       | Trigger                        | Status |
-| ------------------------------------------------ | ------------ | --------------------------------- | ------------------------------ | ------ |
-| [structuring-projects](structuring-projects)     | 📚 Knowledge | Project structure (features, DDD) | "Organizing project structure" | ✅     |
-| [react-19](react-19)                             | 📚 Knowledge | React 19 + React Compiler         | "Writing React components"     | ✅     |
-| [zod-4](zod-4)                                   | 📚 Knowledge | Zod v4 validation patterns        | "Creating Zod schemas"         | ✅     |
-| [typescript](typescript)                         | 📚 Knowledge | Strict types, const patterns      | "Writing TypeScript"           | ✅     |
-| [tailwind-4](tailwind-4)                         | 📚 Knowledge | cn() utility, Tailwind 4          | "Styling with Tailwind"        | ✅     |
-| [developing-with-nextjs](developing-with-nextjs) | 📚 Knowledge | App Router, caching, middleware   | "Writing Next.js code"         | ✅     |
-| [supabase](supabase)                             | 📚 Knowledge | SSR auth, RLS, data access        | "Working with Supabase"        | ✅     |
-| playwright                                       | 📚 Knowledge | Page Object Model, selectors      | "Writing E2E tests"            | 📝     |
-| zustand-5                                        | 📚 Knowledge | Persist, selectors, slices        | "Managing client state"        | 📝     |
+| Skill                                        | Type         | Description                       | Trigger                        | Status |
+| -------------------------------------------- | ------------ | --------------------------------- | ------------------------------ | ------ |
+| [structuring-projects](structuring-projects) | 📚 Knowledge | Project structure (features, DDD) | "Organizing project structure" | ✅     |
+| [react-19](react-19)                         | 📚 Knowledge | React 19 + React Compiler         | "Writing React components"     | ✅     |
+| [zod-4](zod-4)                               | 📚 Knowledge | Zod v4 validation patterns        | "Creating Zod schemas"         | ✅     |
+| [typescript](typescript)                     | 📚 Knowledge | Strict types, const patterns      | "Writing TypeScript"           | ✅     |
+| [tailwind-4](tailwind-4)                     | 📚 Knowledge | cn() utility, Tailwind 4          | "Styling with Tailwind"        | ✅     |
+| [nextjs](nextjs)                             | 📚 Knowledge | App Router, caching, middleware   | "Writing Next.js code"         | ✅     |
+| [supabase](supabase)                         | 📚 Knowledge | SSR auth, RLS, data access        | "Working with Supabase"        | ✅     |
+| playwright                                   | 📚 Knowledge | Page Object Model, selectors      | "Writing E2E tests"            | 📝     |
+| zustand-5                                    | 📚 Knowledge | Persist, selectors, slices        | "Managing client state"        | 📝     |
 
 **Legend**:
 

@@ -22,7 +22,7 @@ allowed-tools: Read
 
 **Cross-references:**
 
-- For Next.js patterns → See `developing-with-nextjs` skill
+- For Next.js patterns → See `nextjs` skill
 - For React patterns → See `react-19` skill
 
 ---

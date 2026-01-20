@@ -46,7 +46,7 @@ allowed-tools: Read
 - **Use `FormField`** (never inline `Label + Input + Error`)
 - **Apply `aria-invalid` and `aria-describedby`** for accessibility
 - **Use `applyActionErrors` util** for server field errors
-- **Return typed ActionResult** from Server Actions
+- **Return typed ApiResponse** from Server Actions
 
 ## NEVER
 
@@ -88,9 +88,9 @@ export type CreateUserInput = z.infer<typeof createUserSchema>;
 ## Server Action Contract
 
 ```typescript
-// features/shared/types/actions.ts
-export type ActionResult<TField extends string = string> =
-  | { ok: true; message?: string }
+// features/shared/types/api.ts
+export type ApiResponse<T, TField extends string = string> =
+  | { ok: true; data: T; message?: string }
   | { ok: false; error: string; fieldErrors?: Partial<Record<TField, string>> };
 ```
 
@@ -99,11 +99,11 @@ export type ActionResult<TField extends string = string> =
 "use server";
 
 import { createUserSchema } from "./schemas";
-import type { ActionResult } from "@/features/shared/types/actions";
+import type { ApiResponse } from "@/features/shared/types/api";
 
 export async function createUser(
   data: unknown,
-): Promise<ActionResult<keyof CreateUserInput>> {
+): Promise<ApiResponse<User, keyof CreateUserInput>> {
   // 1. Validate
   const result = createUserSchema.safeParse(data);
   if (!result.success) {
@@ -116,8 +116,8 @@ export async function createUser(
 
   // 2. Business logic
   try {
-    await db.users.create(result.data);
-    return { ok: true, message: "User created successfully" };
+    const user = await db.users.create(result.data);
+    return { ok: true, data: user, message: "User created successfully" };
   } catch (error) {
     return { ok: false, error: "Failed to create user" };
   }

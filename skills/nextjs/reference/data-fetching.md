@@ -185,6 +185,24 @@ export async function getProject(projectId: string): Promise<Project> {
 }
 ```
 
+### Option B: Direct Database Access (Simple Apps without DDD)
+
+```typescript
+// features/users/services/user-service.ts
+export async function getProject(projectId: string): Promise<Project> {
+  return withAppContext(async (ctx) => {
+    const { data, error } = await ctx.supabase
+      .from("projects")
+      .select("*")
+      .eq("id", projectId)
+      .single();
+
+    if (error) throw new Error(`Project not found: ${projectId}`);
+    return data;
+  });
+}
+```
+
 > **Note**: Repository implementation is covered in `structuring-projects` (DDD patterns).
 
 ---

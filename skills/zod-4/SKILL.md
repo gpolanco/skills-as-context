@@ -90,7 +90,7 @@ const dateSchema = z.date();
 const userSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1).max(100),
-  email: z.string().email(),
+  email: z.email(),
   age: z.number().int().positive().optional(),
   role: z.enum(["admin", "user", "guest"]),
   createdAt: z.date().default(() => new Date()),

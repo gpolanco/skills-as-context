@@ -36,9 +36,9 @@ allowed-tools: Read
 - Import internals from other features (`@/features/auth/utils/privateHelper`)
 - Mix tests inside `src/`
 - Use deep relative imports (`../../../../utils`)
-- Put business logic in `app/` directory
 - Create global `utils/` folders without clear ownership
 - Create giant `types.ts` files
+- Put Server Actions in `src/app/actions` (Move them to the corresponding feature/actions)
 
 ### DEFAULTS
 

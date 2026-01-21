@@ -16,7 +16,7 @@ curl -sSL https://raw.githubusercontent.com/gpolanco/skills-as-context/main/temp
 
 **Next Step**: Ask your AI assistant (Claude, Cursor, Antigravity):
 
-> "Analyze my project stack and configure my AGENTS.md based on the local skills catalog. Use @skill-integrator for guidance."
+> "Analyze my project stack and configure my AGENTS.md based on the local skills catalog. Use @skill-integrator for guidance. Use the remote templates as your source of truth."
 
 ---
 

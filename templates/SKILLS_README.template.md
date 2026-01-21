@@ -1,3 +1,9 @@
+<!--
+  CRITICAL: This file is orchestrated by the @skill-integrator meta-skill.
+  Source of Truth (Template): https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md
+  DO NOT "summarize" or "exaggerate" the content. Follow the template headers exactly.
+-->
+
 # Project Skills Catalog 📦
 
 This directory contains AI Agent Skills that teach coding assistants our architectural patterns and coding standards.

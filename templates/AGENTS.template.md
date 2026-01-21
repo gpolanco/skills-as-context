@@ -1,6 +1,12 @@
+<!--
+  CRITICAL: This file is orchestrated by the @skill-integrator meta-skill.
+  Source of Truth (Template): https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md
+  DO NOT modify the table structures or headers.
+-->
+
 # {PROJECT_NAME} - Repository Guidelines
 
-\u003e **Purpose**: {PROJECT_PURPOSE}
+> **Purpose**: {PROJECT_PURPOSE}
 
 ---
 
@@ -115,7 +121,7 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 
 ## Project-Specific Rules
 
-\u003c!-- Add any unique flows, constraints, or patterns specific to this project --\u003e
+<!-- Add any unique flows, constraints, or patterns specific to this project -->
 
 ### {Feature/Integration Name}
 
@@ -149,4 +155,4 @@ pnpm test                    # Run tests
 
 ---
 
-\u003e {Add project tagline or quote if applicable}
+> {Add project tagline or quote if applicable}

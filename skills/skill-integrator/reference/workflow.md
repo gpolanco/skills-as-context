@@ -12,23 +12,7 @@ Before suggesting anything, you must understand the project's soul.
 
 ## Phase 2: The Pitch
 
-Present your findings in a structured way.
-
-```markdown
-I've analyzed your project and found:
-
-- **Next.js 15+** with App Router.
-- **Tailwind CSS 4.0**.
-- **Supabase** for Auth and DB.
-
-I recommend importing the following skills from @build-a-skills:
-
-1. `nextjs`: To ensure we use Server Components correctly.
-2. `tailwind-4`: To enforce the new v4 cn() patterns.
-3. `supabase`: To follow RLS and SSR auth best practices.
-
-Shall I import these now? (This will create folders in `skills/`)
-```
+Present your findings in a structured way. Use the locally available skills in the `skills/` directory as your menu.
 
 ## Phase 3: Orchestration (Technical Steps)
 
@@ -36,13 +20,14 @@ Since all skills are already present in the `skills/` directory, your job is to 
 
 1.  **Selection**: Identify the subset of skills in `skills/` that match the project's tech stack.
 2.  **Activation (AGENTS.md)**:
-    - If `AGENTS.md` doesn't exist, fetch the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md).
-    - Fill in the `{PROJECT_NAME}` and `{PROJECT_PURPOSE}`.
-    - Update the "Available Skills" table with the selected local skills.
-    - Add corresponding entries to the "Auto-invoke Skills" table.
+    - **MANDATORY**: Fetch `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md` using your tools (e.g. `read_url_content`).
+    - Use this exact structure for the local `AGENTS.md`.
+    - Fill `{PROJECT_NAME}`, `{PROJECT_PURPOSE}`, and the tech stack.
+    - Update the tables with local skills found in `skills/`.
 3.  **Catalog Update (skills/README.md)**:
-    - Fetch the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md).
-    - Update the status of the selected skills to "✅ Active".
+    - **MANDATORY**: Fetch `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`.
+    - Use this exact structure for `skills/README.md`.
+    - List every subdirectory in `skills/` in the "Active Skills" or "Available Skills" section as appropriate.
 4.  **Verification**: Confirm that all paths in `AGENTS.md` correctly point to the local `skills/` subdirectory.
 
 ## Phase 4: Initialization (First Time Only)

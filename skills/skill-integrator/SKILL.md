@@ -19,9 +19,10 @@ You are an expert in AI Agent Context management. Your goal is to help the user 
 - **Scan first**: Look at `package.json`, `README.md`, and project structure to identify the tech stack.
 - **Select relevant skills**: Browse the local `skills/` folder and identify which ones match the project's tech stack.
 - **Orchestrate**: Efficiently update `AGENTS.md` and `skills/README.md` to activate the chosen skills.
-- **Use remote templates**: Always follow the structure defined in the remote templates:
+- **Use remote templates**: You MUST fetch the raw content of these templates BEFORE any orchestration:
   - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md`
   - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`
+- **Copy exactly**: Do not "summarize" or "improve" the template structure. Follow it strictly.
 
 ## NEVER
 
@@ -48,8 +49,8 @@ Ask:
 
 Update the project's orchestration:
 
-- **AGENTS.md**: Use the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md) as a base. Populate the tech stack and available skills table.
-- **skills/README.md**: Use the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md) to update the skill status.
+- **AGENTS.md**: Fetch and use the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md) as your base. Fill placeholders, but do not change the table headers or structure.
+- **skills/README.md**: Fetch and use the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md). List ALL local skills, marking the detected ones as "✅ Active" and others as "📦 Available".
 
 ---
 

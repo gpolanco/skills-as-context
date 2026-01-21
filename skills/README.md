@@ -34,9 +34,10 @@ Reusable patterns for modern web development:
 
 Tools for creating and managing skills:
 
-| Skill                          | Type      | Description                     | Trigger          | Status |
-| ------------------------------ | --------- | ------------------------------- | ---------------- | ------ |
-| [skill-creator](skill-creator) | ⚙️ Hybrid | Create new skills (V5 standard) | "Create a skill" | ✅     |
+| Skill                                | Type      | Description                     | Trigger          | Status |
+| ------------------------------------ | --------- | ------------------------------- | ---------------- | ------ |
+| [skill-integrator](skill-integrator) | ⚙️ Hybrid | Manage and import skills        | "Add a skill"    | ✅     |
+| [skill-creator](skill-creator)       | ⚙️ Hybrid | Create new skills (V5 standard) | "Create a skill" | ✅     |
 
 ---
 

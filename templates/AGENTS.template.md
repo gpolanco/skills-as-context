@@ -27,11 +27,10 @@
 
 ## Available Skills
 
-### Meta Skills
-
-| Skill           | Description                                 | URL                                       |
-| --------------- | ------------------------------------------- | ----------------------------------------- |
-| `skill-creator` | Create/modify AI agent skills (V5 standard) | [SKILL.md](skills/skill-creator/SKILL.md) |
+| Skill              | Description                                 | URL                                          |
+| ------------------ | ------------------------------------------- | -------------------------------------------- |
+| `skill-integrator` | Manage and import AI skills                 | [SKILL.md](skills/skill-integrator/SKILL.md) |
+| `skill-creator`    | Create/modify AI agent skills (V5 standard) | [SKILL.md](skills/skill-creator/SKILL.md)    |
 
 ### Generic Skills
 
@@ -54,6 +53,7 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 
 | Action                              | Skill                  |
 | ----------------------------------- | ---------------------- |
+| Integrating/Adding new skills       | `skill-integrator`     |
 | Creating new skills                 | `skill-creator`        |
 | Organizing project structure        | `structuring-projects` |
 | Writing React 19 components         | `react-19`             |

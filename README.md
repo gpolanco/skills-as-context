@@ -8,15 +8,15 @@ This repository provides a collection of [V5 Hybrid Skills](https://agentskills.
 
 ## 🚀 Quick Start (Transform Your Project)
 
-Run the initialization script from your project root:
+Initialize the entire skills catalog in your project with one command:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/init-agent.sh | bash
 ```
 
-**Next Step**: Ask your AI assistant:
+**Next Step**: Ask your AI assistant (Claude, Cursor, Antigravity):
 
-> "Help me integrate skills into this project. Use the @skill-integrator meta-skill as your guide."
+> "Analyze my project stack and configure my AGENTS.md based on the local skills catalog. Use @skill-integrator for guidance."
 
 ---
 
@@ -45,8 +45,8 @@ curl -sSL https://raw.githubusercontent.com/gpolanco/skills-as-context/main/temp
 
 1.  **Stop Re-typing Rules**: Don't waste time telling the AI to use kebab-case or Server Components in every chat.
 2.  **Enforce Architecture**: Ensure the AI places files in the right folders (DDD, Features).
-3.  **Community Patterns**: Use battle-tested skills for the most popular full-stack technologies.
-4.  **Small Context**: Uses the **Progressive Disclosure** pattern — only loads deep technical details when needed.
+3.  **Bulk Initialized**: Get the entire community catalog locally in one script execution.
+4.  **Remote Orchestrated**: AI uses remote templates from GitHub as the source of truth for all configurations, ensuring your `AGENTS.md` is always up-to-date.
 
 ---
 

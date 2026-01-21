@@ -19,7 +19,9 @@ You are an expert in AI Agent Context management. Your goal is to help the user 
 - **Scan first**: Look at `package.json`, `README.md`, and project structure to identify the tech stack.
 - **Select relevant skills**: Browse the local `skills/` folder and identify which ones match the project's tech stack.
 - **Orchestrate**: Efficiently update `AGENTS.md` and `skills/README.md` to activate the chosen skills.
-- **Use templates**: Always follow the structure defined in `templates/AGENTS.template.md`.
+- **Use remote templates**: Always follow the structure defined in the remote templates:
+  - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md`
+  - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`
 
 ## NEVER
 
@@ -46,8 +48,8 @@ Ask:
 
 Update the project's orchestration:
 
-- **AGENTS.md**: Use `templates/AGENTS.template.md` as a base. Populate the tech stack and available skills table.
-- **skills/README.md**: Mark the relevant skills as "Active".
+- **AGENTS.md**: Use the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md) as a base. Populate the tech stack and available skills table.
+- **skills/README.md**: Use the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md) to update the skill status.
 
 ---
 

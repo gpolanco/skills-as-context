@@ -1,34 +1,24 @@
-# {PROJECT_NAME} - AI Agent Skills
+# Project Skills Catalog 📦
 
-This directory contains the AI Agent Skills used in this project to guide AI assistants (Claude, Cursor, Copilot, Antigravity) in following our architectural patterns and coding standards.
-
----
-
-## 📦 Project Skills
-
-| Skill              | Description              | Status    | Source                                       |
-| :----------------- | :----------------------- | :-------- | :------------------------------------------- |
-| `skill-integrator` | Manage and import skills | ✅ Active | [Internal](skills/skill-integrator/SKILL.md) |
-| {SKILL_NAME}       | {SKILL_DESCRIPTION}      | {STATUS}  | [{SOURCE_TYPE}]({SOURCE_URL})                |
+This directory contains AI Agent Skills that teach coding assistants our architectural patterns and coding standards.
 
 ---
 
-## 🛠️ Management
+## 🚀 Active Skills
 
-This project uses the [Agent Skills Standard](https://agentskills.io). To add or update skills:
-
-1.  **Ask the AI**: "Help me add a new skill for {topic}" or "Update the {skill-name} skill".
-2.  The `skill-integrator` will assist in browsing and importing from the [community catalog](https://github.com/gpolanco/skills-as-context).
+| Skill              | Purpose                       | Status    |
+| :----------------- | :---------------------------- | :-------- |
+| `skill-integrator` | Orchestrates project skills   | ✅ Active |
+| `skill-creator`    | Guides creation of new skills | ✅ Active |
+| {SKILL_NAME}       | {SKILL_DESCRIPTION}           | ✅ Active |
 
 ---
 
-## 🚀 How to Use
+## 🛠️ How to Manage
 
-AI assistants automatically load these skills. If you need to force-reload a specific skill, tell the AI:
-
-```markdown
-Review the current project skills in @skills/README.md
-```
+1.  **Selection**: Browse the `skills/` folder to see all available patterns.
+2.  **Activation**: Ask the AI: _"Analyze my tech stack and update my AGENTS.md based on the local skills."_
+3.  **Customization**: Use `skill-creator` to add project-specific rules in new skills.
 
 ---
 

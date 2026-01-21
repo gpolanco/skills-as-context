@@ -29,26 +29,30 @@ unzip -q "$TEMP_DIR.zip" -d "$TEMP_DIR"
 # Determine the extracted folder name (usually repo-name-main)
 EXTRACTED_FOLDER=$(ls "$TEMP_DIR" | head -n 1)
 
-# 2. Copy folders to project root
-echo -e "${BLUE}📂 Copying skills and templates...${NC}"
+# 2. Copy folders and initialize files
+echo -e "${BLUE}📂 Copying skills catalog...${NC}"
 
 cp -r "$TEMP_DIR/$EXTRACTED_FOLDER/skills" ./
-cp -r "$TEMP_DIR/$EXTRACTED_FOLDER/templates" ./
 
-# 3. Initialize project files
+# 3. Create project files from Remote Templates
+# We download templates temporarily and then remove them to keep the project clean.
+echo -e "${BLUE}📝 Initializing AGENTS.md and skills/README.md from remote templates...${NC}"
+
+TEMPLATE_AGENTS="$TEMP_DIR/$EXTRACTED_FOLDER/templates/AGENTS.template.md"
+TEMPLATE_README="$TEMP_DIR/$EXTRACTED_FOLDER/templates/SKILLS_README.template.md"
+
 if [ ! -f "AGENTS.md" ]; then
-    echo -e "${BLUE}📝 Creating initial AGENTS.md...${NC}"
-    cp templates/AGENTS.template.md AGENTS.md
+    cp "$TEMPLATE_AGENTS" AGENTS.md
 fi
 
 if [ ! -f "skills/README.md" ]; then
-    echo -e "${BLUE}📝 Creating skills catalog README...${NC}"
-    cp templates/SKILLS_README.template.md skills/README.md
+    cp "$TEMPLATE_README" skills/README.md
 fi
 
 # 4. Cleanup
 rm -rf "$TEMP_DIR"
 rm "$TEMP_DIR.zip"
 
-echo -e "${GREEN}✅ All skills and templates have been imported locally!${NC}"
-echo -e "${BLUE}🤖 AI Handover:${NC} Please ask your AI assistant: \"Analyze my project stack and configure my AGENTS.md based on the local skills catalog. Use @skill-integrator for guidance.\""
+echo -e "${GREEN}✅ All skills have been imported locally!${NC}"
+echo -e "${BLUE}🤖 AI Handover:${NC} Please ask your AI assistant: \"Analyze my project stack and configure my AGENTS.md based on the local skills catalog.\" 
+${BLUE}💡 Tip:${NC} Tell the agent to use the remote templates from: https://github.com/gpolanco/skills-as-context/tree/main/templates"

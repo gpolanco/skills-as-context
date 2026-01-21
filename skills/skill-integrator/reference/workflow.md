@@ -36,11 +36,12 @@ Since all skills are already present in the `skills/` directory, your job is to 
 
 1.  **Selection**: Identify the subset of skills in `skills/` that match the project's tech stack.
 2.  **Activation (AGENTS.md)**:
-    - If `AGENTS.md` doesn't exist, create it from `templates/AGENTS.template.md`.
+    - If `AGENTS.md` doesn't exist, fetch the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md).
     - Fill in the `{PROJECT_NAME}` and `{PROJECT_PURPOSE}`.
     - Update the "Available Skills" table with the selected local skills.
     - Add corresponding entries to the "Auto-invoke Skills" table.
 3.  **Catalog Update (skills/README.md)**:
+    - Fetch the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md).
     - Update the status of the selected skills to "✅ Active".
 4.  **Verification**: Confirm that all paths in `AGENTS.md` correctly point to the local `skills/` subdirectory.
 
@@ -48,5 +49,5 @@ Since all skills are already present in the `skills/` directory, your job is to 
 
 If the project has NO agent context yet:
 
-1.  Ensure the `skills/` and `templates/` folders were created by the setup script.
-2.  Follow the **Orchestration** steps above to generate the first version of the project's context.
+1.  Ensure the `skills/` folder was created by the setup script.
+2.  Follow the **Orchestration** steps above to generate the first version of the project's context using the remote templates.

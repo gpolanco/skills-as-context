@@ -1,34 +1,10 @@
 # Agent Skills Catalog
 
-This directory contains AI Agent Skills following the [V5 Hybrid Model](skill-creator/references/skill-designer-core.md).
+This directory contains AI Agent Skills for teaching patterns and best practices to AI assistants.
 
 ---
 
 ## 📦 Available Skills
-
-### 🌐 Generic Skills
-
-Reusable patterns for modern web development:
-
-| Skill                                        | Type         | Description                       | Trigger                        | Status |
-| -------------------------------------------- | ------------ | --------------------------------- | ------------------------------ | ------ |
-| [structuring-projects](structuring-projects) | 📚 Knowledge | Project structure (features, DDD) | "Organizing project structure" | ✅     |
-| [react-19](react-19)                         | 📚 Knowledge | React 19 + React Compiler         | "Writing React components"     | ✅     |
-| [zod-4](zod-4)                               | 📚 Knowledge | Zod v4 validation patterns        | "Creating Zod schemas"         | ✅     |
-| [typescript](typescript)                     | 📚 Knowledge | Strict types, const patterns      | "Writing TypeScript"           | ✅     |
-| [tailwind-4](tailwind-4)                     | 📚 Knowledge | cn() utility, Tailwind 4          | "Styling with Tailwind"        | ✅     |
-| [nextjs](nextjs)                             | 📚 Knowledge | App Router, caching, middleware   | "Writing Next.js code"         | ✅     |
-| [supabase](supabase)                         | 📚 Knowledge | SSR auth, RLS, data access        | "Working with Supabase"        | ✅     |
-| [forms](forms)                               | 📚 Knowledge | React Hook Form + Zod patterns    | "Creating forms"               | ✅     |
-| playwright                                   | 📚 Knowledge | Page Object Model, selectors      | "Writing E2E tests"            | 📝     |
-| zustand-5                                    | 📚 Knowledge | Persist, selectors, slices        | "Managing client state"        | 📝     |
-
-**Legend**:
-
-- 📚 Knowledge = Rules/Patterns (Markdown)
-- 🔧 Tool = Automation (Scripts)
-- ⚙️ Hybrid = Both
-- Status: ✅ Ready | 🚧 In Progress | 📝 Planned
 
 ### 🛠️ Meta Skills
 
@@ -39,181 +15,158 @@ Tools for creating and managing skills:
 | [skill-integrator](skill-integrator) | ⚙️ Hybrid | Manage and import skills        | "Add a skill"    | ✅     |
 | [skill-creator](skill-creator)       | ⚙️ Hybrid | Create new skills (V5 standard) | "Create a skill" | ✅     |
 
+### 🌐 Generic Skills
+
+Reusable patterns for modern development (language-agnostic):
+
+| Skill                                        | Type         | Description                                      | Trigger                        | Status |
+| -------------------------------------------- | ------------ | ------------------------------------------------ | ------------------------------ | ------ |
+| [structuring-projects](structuring-projects) | 📚 Knowledge | Universal structure patterns (Node.js, Next.js, Python, PHP) | "Organizing project structure" | ✅     |
+| [react-19](react-19)                         | 📚 Knowledge | React 19 + React Compiler                        | "Writing React components"     | ✅     |
+| [nextjs](nextjs)                             | 📚 Knowledge | App Router, caching, middleware                  | "Writing Next.js code"         | ✅     |
+| [typescript](typescript)                     | 📚 Knowledge | Strict types, const patterns                     | "Writing TypeScript"           | ✅     |
+| [zod-4](zod-4)                               | 📚 Knowledge | Zod v4 validation (requires `zod@^4.0.0`)        | "Creating Zod schemas"         | ✅     |
+| [tailwind-4](tailwind-4)                     | 📚 Knowledge | cn() utility, Tailwind 4                         | "Styling with Tailwind"        | ✅     |
+| [supabase](supabase)                         | 📚 Knowledge | SSR auth, RLS, data access                       | "Working with Supabase"        | ✅     |
+| [forms](forms)                               | 📚 Knowledge | React Hook Form + Zod patterns                   | "Creating forms"               | ✅     |
+| [testing-vitest](testing-vitest)             | 📚 Knowledge | Vitest patterns, coverage, mocking               | "Writing tests"                | ✅     |
+
+### 📝 Planned Skills
+
+| Skill      | Description                  | Status |
+| ---------- | ---------------------------- | ------ |
+| playwright | Page Object Model, selectors | 📝     |
+| zustand-5  | Persist, selectors, slices   | 📝     |
+
+**Legend**:
+- 📚 Knowledge = Rules/Patterns (Markdown only)
+- 🔧 Tool = Automation (Scripts)
+- ⚙️ Hybrid = Both
+- Status: ✅ Ready | 🚧 In Progress | 📝 Planned
+
 ---
 
-## 🚀 How to Use Skills
+## 🚀 Quick Start
 
-### Auto-Discovery
+### 1. Auto-Discovery
 
-AI assistants automatically discover skills in your project. Just ensure they're in the right location:
+AI assistants automatically discover skills if they're in these locations:
 
 ```
-skills/                 # Preferred location at project root
+skills/                 # ✅ Preferred (project root)
 .agent/skills/          # Generic fallback
 .claude/skills/         # Claude Code
 .github/skills/         # GitHub Copilot
 .gemini/skills/         # Antigravity/Gemini
 ```
 
-### Manual Loading
+### 2. Manual Loading
 
-To explicitly load a skill during a session:
+Load a specific skill during a session:
 
 ```
-Read skills/react-19/SKILL.md
+Read skills/structuring-projects/SKILL.md
 ```
 
-### Copy to Your Project
+### 3. Copy to Your Project
 
 ```bash
 # Copy specific skill
 cp -r skills/react-19 /path/to/your/project/skills/
 
 # Copy multiple skills
-cp -r skills/{react-19,typescript,structuring-projects} /path/to/your/project/skills/
+cp -r skills/{react-19,typescript,zod-4} /path/to/your/project/skills/
+
+# Copy entire catalog
+cp -r skills /path/to/your/project/
 ```
 
 ---
 
-## 📂 Skill Structure
+## 📂 Skill Anatomy
 
-Each skill follows this anatomy:
+Each skill follows this structure (Progressive Disclosure):
 
 ```
 skill-name/
-├── SKILL.md                 # Main instruction file (<500 lines)
-├── reference/               # Detailed guides (Progressive Disclosure)
-│   └── deep-dive.md
-└── assets/                  # Templates and examples (optional)
+├── SKILL.md                 # Core patterns (<500 lines)
+│   ├── Frontmatter          # Metadata (name, version, trigger)
+│   ├── When to Use          # Clear use cases
+│   ├── Critical Patterns    # ALWAYS/NEVER rules
+│   └── Resources            # Links to reference/
+│
+├── reference/               # Deep-dive guides (loaded on-demand)
+│   ├── advanced.md          # Complex patterns
+│   ├── migration.md         # Version upgrades
+│   └── examples.md          # Extended examples
+│
+└── assets/                  # Templates, schemas (optional)
     └── template.tsx
 ```
 
-### Progressive Disclosure Pattern
-
-- **SKILL.md**: Core patterns, ALWAYS/NEVER rules, quick reference.
-- **reference/**: Deep technical details (loaded on-demand).
-- **assets/**: Templates, schemas, examples.
-
-This keeps AI context small while providing depth when needed.
+**Why Progressive Disclosure?**
+- Keeps AI context small (~500 lines)
+- Details loaded only when needed
+- Faster skill loading
+- Better token efficiency
 
 ---
 
 ## 🛠️ Creating New Skills
 
-### Quick Start
+**TL;DR**: Use `@skill-creator` as your guide.
 
-1. Use `skill-creator` as your guide:
+```bash
+# 1. Read the meta-skill
+cat skills/skill-creator/SKILL.md
 
-   ```bash
-   cat skills/skill-creator/SKILL.md
-   ```
+# 2. Use the template
+cp skills/skill-creator/assets/SKILL-TEMPLATE.md skills/new-skill/SKILL.md
 
-2. Follow the checklist:
-   - [ ] Create `skills/{skill-name}/`.
-   - [ ] Add `SKILL.md` with frontmatter.
-   - [ ] Keep under 500 lines.
-   - [ ] Add ALWAYS/NEVER patterns.
-   - [ ] Use Progressive Disclosure.
-   - [ ] Test with AI assistant.
-
-3. Follow [V5 Hybrid Model](skill-creator/references/skill-designer-core.md).
-
----
-
-## 📋 Design Principles
-
-### 1. Concise is Key
-
-Only include what AI doesn't already know. Avoid common knowledge.
-
-### 2. Progressive Disclosure
-
-- Core in `SKILL.md` (<500 lines).
-- Details in `reference/`.
-- Load heavy content on-demand.
-
-### 3. Critical Rules First
-
-```markdown
-### ALWAYS
-
-- Use const types
-- Validate inputs
-
-### NEVER
-
-- Use any type
-- Skip error handling
+# 3. Validate before committing
+# - Checklist in skill-creator/SKILL.md
 ```
 
-### 4. Show Patterns, Not Tutorials
-
-```typescript
-// ✅ Good
-const user: User = { name: "John" };
-
-// ❌ Bad
-const user: any = { name: "John" };
-```
-
-### 5. Structure > Implementation
-
-Focus on "WHERE things go", not "HOW to code them".
-
----
-
-## 🎯 V5 Hybrid Model Standard
-
-All skills must follow the V5 standard:
-
-### Quality Gates
-
-- ✅ **Reusability**: Used ≥ 3 times.
-- ✅ **Single Responsibility**: One job only.
-- ✅ **Trigger**: Explicit in description.
-- ✅ **Local References**: No external URLs in `reference/`.
-- ✅ **Version Format**: Semantic (X.Y.Z).
-- ✅ **Concise**: `SKILL.md` < 500 lines.
-
-### Frontmatter Fields
-
-| Field                | Required | Example                        |
-| -------------------- | -------- | ------------------------------ |
-| name                 | ✅       | `react-19`                     |
-| description          | ✅       | "React patterns. Trigger: ..." |
-| license              | ✅       | `Apache-2.0`                   |
-| metadata.author      | ✅       | `gpolanco`                     |
-| metadata.version     | ✅       | `"1.0.0"`                      |
-| metadata.scope       | ✅       | `[root]`                       |
-| metadata.auto_invoke | ✅       | `false` or `"phrase"`          |
-| allowed-tools        | ✅       | `Read, Write`                  |
-
-**[Full V5 Standard →](skill-creator/references/skill-designer-core.md)**
+**For full details**: See [skill-creator](skill-creator/SKILL.md)
 
 ---
 
 ## 📚 Resources
 
-### Official
+### Official Standards
 
-- [Agent Skills Standard](https://agentskills.io) - Open standard.
-- [Anthropic Guide](https://docs.anthropic.com/en/docs/build-with-claude/agent-skills) - Best practices.
+- [Agent Skills Standard](https://agentskills.io) - Open standard specification
+- [Anthropic Guide](https://docs.anthropic.com/en/docs/build-with-claude/agent-skills) - Best practices
 
 ### This Project
 
-- [Skill Creator](skill-creator/SKILL.md) - Meta skill.
-- [V5 Hybrid Model](skill-creator/references/skill-designer-core.md) - Engineering rules.
+- **Creating Skills**: [skill-creator/SKILL.md](skill-creator/SKILL.md)
+- **Design Guidelines**: [skill-designer-core.md](skill-creator/references/skill-designer-core.md)
+- **Integration**: [skill-integrator/SKILL.md](skill-integrator/SKILL.md)
 
 ---
 
 ## 🤝 Contributing
 
-Want to add a skill?
+Want to add a skill to this catalog?
 
-1. Follow the [skill-creator](skill-creator/SKILL.md) guide.
-2. Ensure V5 compliance.
-3. Test with AI assistant.
-4. Submit PR.
+1. **Check reusability**: Will it be used ≥3 times?
+2. **Use skill-creator**: Follow `@skill-creator` guide
+3. **Validate quality**: Run the checklist
+4. **Test with AI**: Verify it works with Claude/Cursor
+5. **Submit PR**: Include skill + tests
+
+**[Contributing Guide →](../README.md#contributing)**
+
+---
+
+## 📖 Version History
+
+| Version | Date       | Changes                                      |
+| ------- | ---------- | -------------------------------------------- |
+| 2.0.0   | 2026-01-22 | structuring-projects v2 (universal patterns) |
+| 1.1.0   | 2026-01-22 | zod-4 explicit version requirement           |
+| 1.0.0   | 2026-01-19 | Initial catalog with V5 Hybrid Model         |
 
 ---
 

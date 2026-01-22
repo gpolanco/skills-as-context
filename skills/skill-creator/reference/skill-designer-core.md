@@ -1,6 +1,6 @@
-# SKILL DESIGNER CORE - V5 HYBRID MODEL
+# Skill Design Guidelines
 
-This document defines the regulations for creating AI Skills. It recognizes that a Skill can be a **rules library** (Knowledge), an **automation tool** (Tool), or **both** (Hybrid).
+This document defines the standards for creating AI Skills. A Skill can be a **rules library** (Knowledge), an **automation tool** (Tool), or **both** (Hybrid).
 
 ---
 
@@ -460,6 +460,5 @@ Your goal: **Package experience**
 
 ---
 
-**Version:** V5 Hybrid Model
-**Date:** 2026-01-19
+**Last Updated:** 2026-01-22
 ```

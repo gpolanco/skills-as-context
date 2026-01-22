@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**build-a-skills** is a curated collection of AI Agent Skills following the V5 Hybrid Model.
+**build-a-skills** is a curated collection of AI Agent Skills.
 
 **Purpose**: Provide production-ready skills that teach AI assistants best practices, architectural patterns, and coding conventions.
 
@@ -11,7 +11,7 @@
 ```
 build-a-skills/
 ├── skills/                  # Individual skills
-│   ├── skill-creator/      # Meta skill (V5 standard)
+│   ├── skill-creator/      # Meta skill
 │   ├── structuring-projects/ # Project structure patterns
 │   ├── react-19/           # React 19 + Compiler
 │   ├── zod-4/              # Zod v4 validation
@@ -36,7 +36,7 @@ build-a-skills/
 
 | Skill           | Description                                 | URL                                       |
 | --------------- | ------------------------------------------- | ----------------------------------------- |
-| `skill-creator` | Create/modify AI agent skills (V5 standard) | [SKILL.md](skills/skill-creator/SKILL.md) |
+| `skill-creator` | Create/modify AI agent skills | [SKILL.md](skills/skill-creator/SKILL.md) |
 
 ### Generic Skills
 
@@ -66,7 +66,7 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 | Writing TypeScript types/interfaces         | `typescript`           |
 | Styling with Tailwind                       | `tailwind-4`           |
 | Writing Next.js code                        | `nextjs`               |
-| Reviewing skill quality against V5 standard | `skill-creator`        |
+| Reviewing skill quality                     | `skill-creator`        |
 | Adding DDD architecture to a project        | `structuring-projects` |
 | Setting up feature-based architecture       | `structuring-projects` |
 
@@ -77,7 +77,7 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 ### ALWAYS
 
 - **Load skill-creator** before creating/editing skills
-- **Follow V5 Hybrid Model** strictly ([reference](skills/skill-creator/references/skill-designer-core.md))
+- **Follow design guidelines** strictly ([reference](skills/skill-creator/references/skill-designer-core.md))
 - **Keep SKILL.md under 500 lines** - use Progressive Disclosure (move details to `reference/`)
 - **Include ALWAYS/NEVER patterns** in every skill
 - **Use kebab-case** for skill names
@@ -148,5 +148,5 @@ vi skills/README.md
 
 - [Skills Catalog](skills/README.md) - All available skills
 - [Skill Creator](skills/skill-creator/SKILL.md) - How to create skills
-- [V5 Hybrid Model](skills/skill-creator/references/skill-designer-core.md) - Design rules
+- [Design Guidelines](skills/skill-creator/references/skill-designer-core.md) - Quality standards
 - [AGENTS Template](templates/AGENTS.template.md) - Template for other projects

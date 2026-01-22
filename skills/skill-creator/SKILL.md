@@ -1,7 +1,7 @@
 ---
 name: skill-creator
 description: >
-  Orchestrates the design and creation of high-quality AI Skills following the V5 Hybrid Model.
+  Orchestrates the design and creation of high-quality AI Skills.
   Trigger: Use when the user asks to "create a skill", "standardize a workflow", "package a pattern", or "generate a rule set".
 license: Apache-2.0
 metadata:
@@ -12,7 +12,7 @@ metadata:
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ---
 
-# Skill Creator (Orchestrator)
+# Skill Creator
 
 ## When to Use
 
@@ -30,7 +30,7 @@ Use this skill to transform raw requests into structured `agent-skills` folders 
 
 ## Critical Patterns (ALWAYS / NEVER)
 
-You must enforce the `skill-designer-core` standards during generation:
+You must enforce the design standards during generation:
 
 ### ALWAYS
 
@@ -53,7 +53,7 @@ You must enforce the `skill-designer-core` standards during generation:
 
 1. **Analysis & Validation**:
    - Analyze the user request.
-   - **CRITICAL**: Read `reference/skill-designer-core.md` to load the validation rules (V5 Hybrid Model) into context.
+   - **CRITICAL**: Read `reference/skill-designer-core.md` to load the validation rules into context.
    - Validate if it meets Rule R1 (Reusability) and R3 (Responsibility).
 
 2. **Scaffolding**:
@@ -70,5 +70,5 @@ You must enforce the `skill-designer-core` standards during generation:
 
 ## Resources & References
 
-- **V5 Hybrid Model Standard**: See [reference/skill-designer-core.md](reference/skill-designer-core.md). _Read this before generating._
+- **Design Standards**: See [reference/skill-designer-core.md](reference/skill-designer-core.md). _Read this before generating._
 - **Master Template**: See [assets/SKILL-TEMPLATE.md](assets/SKILL-TEMPLATE.md).

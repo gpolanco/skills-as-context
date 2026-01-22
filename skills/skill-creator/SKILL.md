@@ -8,7 +8,7 @@ metadata:
   author: devcontext
   version: "2.0.0"
   scope: [root]
-  auto_invoke: "Creating new skills"
+  auto_invoke: false  # Meta-skill: Manual invocation preferred with @skill-creator
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ---
 

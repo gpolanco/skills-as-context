@@ -66,6 +66,9 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 | Writing TypeScript types/interfaces         | `typescript`           |
 | Styling with Tailwind                       | `tailwind-4`           |
 | Writing Next.js code                        | `nextjs`               |
+| Creating forms                              | `forms`                |
+| Working with Supabase                       | `supabase`             |
+| Writing tests                               | `testing-vitest`       |
 | Reviewing skill quality                     | `skill-creator`        |
 | Adding DDD architecture to a project        | `structuring-projects` |
 | Setting up feature-based architecture       | `structuring-projects` |

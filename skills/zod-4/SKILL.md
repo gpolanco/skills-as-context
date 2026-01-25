@@ -13,6 +13,20 @@ metadata:
 allowed-tools: Read
 ---
 
+# Zod Validation
+
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Advanced Examples & Transformations** | ⚠️ [reference/advanced-examples.md](reference/advanced-examples.md) |
+
+**⚠️ DO NOT implement complex transformations or refinements without reading [advanced-examples.md](reference/advanced-examples.md) FIRST.**
+
+---
+
 # ⚠️ VERSION REQUIREMENT
 
 **This skill requires Zod v4.x. If installing fresh, use:**
@@ -71,6 +85,15 @@ Use this skill when:
 - Define schemas in `types/` or feature-specific directories
 - Use Zod with React Hook Form via `zodResolver`
 - Use `z.coerce` for type conversions (strings → numbers, etc.)
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** use `parse()` without error handling → always use `safeParse()` for untrusted input to avoid crashing the app.
+- **DO NOT** define schemas inside functions or render loops → define them at module level to avoid unnecessary re-creation and improve performance.
+- **DO NOT** ignore type inference → use `z.infer<typeof schema>` to maintain a single source of truth for both validation and types.
+- **DO NOT** duplicate validation logic in both TypeScript and Zod → let Zod handle the runtime validation and derive the types from it.
 
 ---
 

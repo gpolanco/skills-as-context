@@ -33,9 +33,9 @@ allowed-tools: Read
 
 | Project Type | MANDATORY Reading |
 |--------------|-------------------|
-| **Backend API/CLI** (Node.js, Python, Go, PHP) | [reference/node-cli-patterns.md](reference/node-cli-patterns.md) |
-| **Frontend** (Next.js, React) | [reference/nextjs-patterns.md](reference/nextjs-patterns.md) |
-| **DDD/Hexagonal** | [reference/ddd-rules.md](reference/ddd-rules.md) |
+| **Backend API/CLI** (Node.js, Python, Go, PHP) | ⚠️ [reference/node-cli-patterns.md](reference/node-cli-patterns.md) |
+| **Frontend** (Next.js, React) | ⚠️ [reference/nextjs-patterns.md](reference/nextjs-patterns.md) |
+| **DDD/Hexagonal** | ⚠️ [reference/ddd-rules.md](reference/ddd-rules.md) |
 
 **⚠️ DO NOT invent structure from memory. READ the exact reference file for your project type.**
 
@@ -111,6 +111,16 @@ What type of project are you working on?
 - Shared code lives in `shared/` (or `common/`, `core/`)
 - Naming: `kebab-case` for files/folders (except Python: `snake_case`)
 - Use single path alias: `@/*` → `src/*`
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** use deep relative imports (`../../../../`) → use path aliases (`@/*`).
+- **DO NOT** organize by file type at root (e.g., `controllers/`, `models/`) → organize by domain/feature.
+- **DO NOT** bypass module boundaries → DO NOT import internals from other features directly; always use the public API (`index.ts`).
+- **DO NOT** create a circular dependency between features.
+- **DO NOT** create a global "utils" folder as a dumping ground → keep utilities specific to the feature they serve.
 
 ---
 

@@ -14,6 +14,18 @@ allowed-tools: Read
 
 # Forms (React Hook Form + Zod)
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Form Components & Patterns** | ⚠️ [reference/validation.md](reference/validation.md) |
+
+**⚠️ DO NOT implement custom form wrappers without reading the reference files FIRST.**
+
+---
+
 ## When to Use
 
 - Creating forms with React Hook Form
@@ -64,6 +76,15 @@ allowed-tools: Read
 - Submit: React Hook Form → Server Action
 - Feedback: Loading state + field errors + global error/success
 - Components: `FormWrapper` + `FormField`
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** validate in JSX (`required`, `validate` props) → Zod is the single source of truth.
+- **DO NOT** use native `action={}` if you need field errors or rich UX feedback → use `onSubmit` handler.
+- **DO NOT** duplicate `FormWrapper` or `FormField` logic → use the provided shared components.
+- **DO NOT** show field errors ONLY in toasts → they MUST be shown inline with the input.
 
 ---
 

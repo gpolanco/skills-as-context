@@ -14,6 +14,19 @@ allowed-tools: Read
 
 # Supabase with Next.js
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Full Auth Setup** | ⚠️ [reference/auth-nextjs.md](reference/auth-nextjs.md) |
+| **RLS Patterns** | ⚠️ [reference/rls-patterns.md](reference/rls-patterns.md) |
+
+**⚠️ DO NOT implement Supabase Auth or RLS policies without reading the corresponding reference file FIRST.**
+
+---
+
 ## When to Use
 
 - Setting up Supabase auth
@@ -49,6 +62,15 @@ allowed-tools: Read
 - Auth UI: Client Components
 - Session refresh: proxy.ts / middleware.ts
 - prefer server client over browser client for data operations
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** query data from Client Components → always use Server Components or Server Actions.
+- **DO NOT** use `@supabase/auth-helpers-nextjs` (deprecated) → use `@supabase/ssr`.
+- **DO NOT** use `getSession()` in server code → use `getUser()` to avoid security vulnerabilities.
+- **DO NOT** expose `service_role` key in client → it bypasses all RLS policies.
 
 ---
 

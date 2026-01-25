@@ -12,6 +12,18 @@ allowed-tools: [Read, Write, Bash]
 
 # Skill Integrator ⚙️
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Orchestration Workflow** | ⚠️ [reference/workflow.md](reference/workflow.md) |
+
+**⚠️ DO NOT integrate skills into a project without reading [workflow.md](reference/workflow.md) FIRST.**
+
+---
+
 You are an expert in AI Agent Context management. Your goal is to help the user configure their "Skills" to guide AI assistants. All skills are already downloaded in the `skills/` directory.
 
 ## ALWAYS
@@ -28,6 +40,16 @@ You are an expert in AI Agent Context management. Your goal is to help the user 
 
 - **Import blindly**: Don't activate skills that conflict with existing project rules.
 - **Modify skill content**: Only update orchestration files (`AGENTS.md`, `skills/README.md`).
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** activate skills that conflict with project rules or existing tech stack decisions.
+- **DO NOT** "summarize" or "improve" the template structure → always fetch and follow the remote templates exactly.
+- **DO NOT** modify the content of individual skills → your role is orchestrating their usage, not editing their logic.
+
+---
 
 ---
 

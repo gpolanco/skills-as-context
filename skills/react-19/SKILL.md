@@ -12,6 +12,20 @@ metadata:
 allowed-tools: Read
 ---
 
+# React 19
+
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Advanced Features & Patterns** | ⚠️ [reference/advanced.md](reference/advanced.md) |
+
+**⚠️ DO NOT implement complex React 19 features without reading [advanced.md](reference/advanced.md) FIRST.**
+
+---
+
 ## Imports (REQUIRED)
 
 ```typescript
@@ -79,6 +93,17 @@ const filtered = useMemo(() => products.filter((p) => p.inStock), [products]);
 const sorted = useMemo(() => filtered.sort((a, b) => a.price - b.price), [filtered]);
 const handleAddToCart = useCallback((id) => addToCart(id), []);
 ```
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** use `useMemo`, `useCallback`, or `memo` manually → React Compiler handles this automatically.
+- **DO NOT** use function declarations for components → Use arrow functions + `React.FC` + named export.
+- **DO NOT** create promises inside a component's render and pass them to `use()` → Always pass promises from outside or parent.
+- **DO NOT** use `forwardRef` → In React 19, `ref` is a regular prop.
+
+---
 
 ## use() Hook for Promises
 

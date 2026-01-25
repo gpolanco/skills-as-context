@@ -14,11 +14,27 @@ allowed-tools: Read
 
 # Developing with Next.js (App Router)
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Creating Server Actions & data flow** | ⚠️ [reference/data-fetching.md](reference/data-fetching.md) |
+| **Routing & file structure** | ⚠️ [reference/routing-system.md](reference/routing-system.md) |
+| **Architecture decisions** | ⚠️ [reference/architecture.md](reference/architecture.md) |
+
+**⚠️ DO NOT implement Server Actions without reading [data-fetching.md](reference/data-fetching.md) FIRST.**
+
+
+---
+
 ## When to Use
 
 Use this skill for **Next.js-specific** patterns:
 
 - App Router routing conventions
+- **Server Actions & data fetching flow** (Actions → Services → Repositories)
 - Caching and revalidation
 - Middleware configuration
 - Metadata API
@@ -27,7 +43,8 @@ Use this skill for **Next.js-specific** patterns:
 
 **Cross-references:**
 
-- For React patterns (hooks, Server Actions) → See `react-19` skill
+- **For Server Actions data flow & error handling** → See [reference/data-fetching.md](reference/data-fetching.md)
+- For React patterns (hooks, components) → See `react-19` skill
 - For project structure (features/, imports) → See `structuring-projects` skill
 
 ---
@@ -37,6 +54,10 @@ Use this skill for **Next.js-specific** patterns:
 ### ALWAYS
 
 - **Use App Router** - Never use Pages Router for new projects
+- **Read [data-fetching.md](reference/data-fetching.md) before creating Server Actions**
+- **Follow Action → Service → Repository flow** (see data-fetching.md)
+- **Return `ApiResponse<T>` from all Actions** (never throw exceptions)
+- **Validate ALL inputs with Zod** in Actions (including IDs)
 - **Implement `loading.tsx`** for every major route segment
 - **Implement `error.tsx`** for graceful error handling
 - **Use `generateMetadata()`** for dynamic SEO
@@ -60,16 +81,29 @@ Use this skill for **Next.js-specific** patterns:
 
 ---
 
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** use `router.push` for navigation in Server Actions → use `redirect()`
+- **DO NOT** create a Route Handler (`api/route.ts`) for internal data mutations → use Server Actions
+- **DO NOT** use `usePathname` or `useSearchParams` if you can get the data from props in a Server Component
+- **DO NOT** ignore the Action → Service → Repository flow → See [data-fetching.md](reference/data-fetching.md)
+
+---
+
+---
+
 ## Decision Tree
 
 ```
 Creating a new page?        → page.tsx (default export async function)
+Need to navigate/redirect?  → ⚠️ STOP → Read reference/routing-system.md FIRST
 Need loading state?         → Add loading.tsx in same folder
 Need error handling?        → Add error.tsx ('use client') in same folder
 Sharing layout?             → Use layout.tsx
 Need metadata?              → Export generateMetadata()
 Public API / webhook?       → Use route.ts (Route Handler)
-Internal mutation?          → Use Server Action (see react-19 skill)
+Internal mutation?          → ⚠️ STOP → Read reference/data-fetching.md FIRST
+                              Then create Server Action with Action → Service → Repository flow
 Need middleware?            → middleware.ts at project root
 ```
 

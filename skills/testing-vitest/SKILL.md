@@ -14,6 +14,21 @@ allowed-tools: Read, Write, Bash
 
 # Testing with Vitest (Hybrid Skill)
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Configuration Setup** | ⚠️ [reference/vitest-config.md](reference/vitest-config.md) |
+| **Mocking Guide** | ⚠️ [reference/mocking-guide.md](reference/mocking-guide.md) |
+| **Advanced Patterns** | ⚠️ [reference/advanced-patterns.md](reference/advanced-patterns.md) |
+| **Coverage Strategy** | ⚠️ [reference/coverage-strategy.md](reference/coverage-strategy.md) |
+
+**⚠️ DO NOT configure Vitest or implement complex mocks without reading the corresponding reference file FIRST.**
+
+---
+
 ## When to Use
 
 Use this skill when:
@@ -58,6 +73,15 @@ Use this skill when:
 - **Test Framework**: Vitest (fast, ESM-native, Vite-compatible)
 - **Component Testing**: React Testing Library (user-centric)
 - **Assertions**: Vitest's `expect` API + Testing Library matchers
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** test implementation details (internal state, private methods) → test what users see and do.
+- **DO NOT** share state between tests → ensure each test is independent and uses `beforeEach`/`afterEach` for cleanup.
+- **DO NOT** use `any` in test types → maintain the same level of strict typing in tests as in production code.
+- **DO NOT** commit `.only` or `.skip` blocks → these are for local development only.
 
 ---
 

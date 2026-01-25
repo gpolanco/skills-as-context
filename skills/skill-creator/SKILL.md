@@ -14,6 +14,18 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 
 # Skill Creator
 
+## 🚨 CRITICAL: Reference Files are MANDATORY
+
+**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+
+| Task | MANDATORY Reading |
+|------|-------------------|
+| **Skill Design Standards** | ⚠️ [reference/skill-designer-core.md](reference/skill-designer-core.md) |
+
+**⚠️ DO NOT generate a new skill without reading [skill-designer-core.md](reference/skill-designer-core.md) FIRST.**
+
+---
+
 ## When to Use
 
 Use this skill to transform raw requests into structured `agent-skills` folders when:
@@ -48,6 +60,17 @@ You must enforce the design standards during generation:
 - **Never duplicate content** between `SKILL.md` and `reference/`.
 - **Never use external URLs** in `reference/`. Copy content locally.
 - **Never generate a skill** without a specific `Trigger` in the description.
+
+---
+
+## 🚫 Critical Anti-Patterns
+
+- **DO NOT** generate a skill WITHOUT a specific `Trigger`.
+- **DO NOT** define file/folder locations in the skill → let `structuring-projects` handle that.
+- **DO NOT** duplicate content between `SKILL.md` and `reference/`.
+- **DO NOT** use external URLs in `reference/` → always copy content locally.
+
+---
 
 ## Workflow (The Factory Process)
 

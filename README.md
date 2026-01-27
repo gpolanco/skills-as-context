@@ -18,6 +18,19 @@
 
 ---
 
+### ⚠️ About this repository
+
+This is a **personal and opinionated collection of AI agent skills**, tailored to my own projects, workflows, and technical preferences.
+
+- Skills may depend on conventions or utilities specific to my stack  
+- Not intended as a generic or stable public catalog  
+- Breaking changes may occur without notice  
+
+👉 Looking for **reusable, public skills**?  
+Check out **`agent-skills-labs`** (generic, installable skills).
+
+---
+
 ## ⚡️ Why Skills?
 
 This repository houses the **coding standards, architectural patterns, and best practices** adapted specifically for **my projects**. It serves as persistent memory for my AI assistants (Claude, Cursor, Antigravity), ensuring they always work the way I do.

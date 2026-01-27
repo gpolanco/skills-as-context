@@ -1,38 +1,187 @@
-# Skill Integration Workflow Guide
+# Skill Integration Workflow Guide (v1.1)
 
-This document provides step-by-step instructions for AI assistants on how to perform a deep integration of skills into any project.
+This workflow describes **exactly** how to integrate (activate) skills into a project.
 
-## Phase 1: Contextual Analysis
+## Scope
 
-Before suggesting anything, you must understand the project's soul.
+### You MAY edit
 
-1.  **Read `package.json`**: Identify frameworks (Next.js, Vite, Express), styling (Tailwind, CSS Modules), and utilities (Zod, React Hook Form).
-2.  **Check `AGENTS.md`**: Does it already exist? If so, what skills are already active?
-3.  **Inspect Directory Structure**: Is it a monorepo? Feature-based? Layered architecture?
+* `AGENTS.md`
+* `skills/README.md`
 
-## Phase 2: The Pitch
+### You MUST NOT edit
 
-Present your findings in a structured way. Use the locally available skills in the `skills/` directory as your menu.
+* Any `skills/**/SKILL.md`
+* Any other project files (source code, configs, etc.)
 
-## Phase 3: Orchestration (Technical Steps)
+---
 
-Since all skills are already present in the `skills/` directory, your job is to "activate" them in the project's orchestration files.
+## Phase 0 — Locate the skills directory
 
-1.  **Selection**: Identify the subset of skills in `skills/` that match the project's tech stack.
-2.  **Activation (AGENTS.md)**:
-    - **MANDATORY**: Fetch `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md` using your tools (e.g. `read_url_content`).
-    - Use this exact structure for the local `AGENTS.md`.
-    - Fill `{PROJECT_NAME}`, `{PROJECT_PURPOSE}`, and the tech stack.
-    - Update the tables with local skills found in `skills/`.
-3.  **Catalog Update (skills/README.md)**:
-    - **MANDATORY**: Fetch `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`.
-    - Use this exact structure for `skills/README.md`.
-    - List every subdirectory in `skills/` in the "Active Skills" or "Available Skills" section as appropriate.
-4.  **Verification**: Confirm that all paths in `AGENTS.md` correctly point to the local `skills/` subdirectory.
+Skills are expected to be already downloaded locally.
 
-## Phase 4: Initialization (First Time Only)
+1. Prefer `skills/` if it exists.
+2. Else fallback to `.agent/skills/`.
+3. If neither exists, stop and ask the user to run the project’s setup script that creates/downloads skills.
 
-If the project has NO agent context yet:
+**Define:**
 
-1.  Ensure the `skills/` folder was created by the setup script.
-2.  Follow the **Orchestration** steps above to generate the first version of the project's context using the remote templates.
+* `SKILLS_DIR` = `skills` or `.agent/skills`
+
+---
+
+## Phase 1 — Contextual analysis
+
+Before suggesting anything, understand the project.
+
+1. Read `package.json`
+
+   * Identify: framework, styling, validation, forms, DB/auth.
+2. Read project `README.md` (if present)
+3. Check whether `AGENTS.md` exists
+
+   * If it exists, note:
+
+     * currently active skills
+     * any custom rules the user added
+4. Inspect top-level directory structure
+
+   * monorepo vs single app
+   * `/src` vs `/app` vs `/packages`
+
+**Output (text):**
+
+* Detected stack (bullet list)
+* Detected skills directory (`SKILLS_DIR`)
+
+---
+
+## Phase 2 — Skill selection
+
+### Goal
+
+Pick the **minimal** set of skills matching the detected stack.
+
+1. List available skills:
+
+```bash
+ls -1 "${SKILLS_DIR}" | sort
+```
+
+2. Select matching skills.
+
+**Rules:**
+
+* Don’t activate skills that clearly don’t apply.
+* If the project already has active skills, keep them unless they are wrong/conflicting.
+
+**Output (text):**
+
+* Proposed active skills (✅)
+* Remaining available skills (📦)
+
+---
+
+## Phase 3 — The pitch (confirmation)
+
+Present findings and ask for confirmation **before writing**.
+
+Template:
+
+* “I detected: … (stack)”
+* “I propose activating: … (skills)”
+* “Shall I update `AGENTS.md` and `skills/README.md` accordingly?”
+
+If the user says yes → continue.
+
+---
+
+## Phase 4 — Orchestration (write files)
+
+### Step 4.1 — Fetch canonical templates (MANDATORY)
+
+Fetch raw content:
+
+* `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md`
+* `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`
+
+Rules:
+
+* **Copy exactly**.
+* Only fill placeholders.
+* Do not change headings or table structures.
+
+### Step 4.2 — Update `AGENTS.md`
+
+1. If `AGENTS.md` does not exist:
+
+   * Create it from the template.
+2. If `AGENTS.md` exists:
+
+   * Prefer replacing its template sections while preserving user custom blocks.
+   * If preservation is unclear, stop and ask the user whether to overwrite or merge.
+
+Populate:
+
+* Project name / purpose placeholders
+* Stack summary
+* Skills table(s): ensure all referenced paths point to `${SKILLS_DIR}/<skill>`
+
+### Step 4.3 — Update `skills/README.md`
+
+1. Create/update from template.
+2. List every skill directory under `${SKILLS_DIR}`.
+3. Mark skills as:
+
+* ✅ Active (selected)
+* 📦 Available (not selected)
+
+---
+
+## Phase 5 — Verification
+
+1. Verify paths exist:
+
+```bash
+for d in $(ls -1 "${SKILLS_DIR}"); do
+  test -f "${SKILLS_DIR}/${d}/SKILL.md" || echo "Missing SKILL.md for ${d}"
+done
+```
+
+2. Verify `AGENTS.md` references valid skill paths.
+3. Re-run the skill list:
+
+   * Ensure all skills are present in `skills/README.md`.
+
+**Output (text):**
+
+* “Integration complete”
+* Active skills list
+* Files changed: `AGENTS.md`, `skills/README.md`
+
+---
+
+## Edge cases
+
+### Existing custom rules in `AGENTS.md`
+
+* Preserve custom sections whenever possible.
+* If unsure, ask: overwrite vs merge.
+
+### Skill naming mismatches
+
+* Prefer directory names as canonical IDs.
+* Don’t “rename” skills during integration.
+
+### Conflicting skills
+
+* Do not activate both.
+* Recommend one and justify briefly.
+
+---
+
+Don’t forget to commit!
+
+```bash
+git add AGENTS.md skills/README.md && git commit -m "chore(skills): integrate active skills"
+```

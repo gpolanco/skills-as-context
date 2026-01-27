@@ -1,89 +1,102 @@
 ---
+
 name: skill-integrator
-description: Manage and import AI Agent Skills from the community catalog. Trigger: "Help me integrate skills", "Add a skill for...", or "Setup my AGENTS.md".
+description: Orchestrate and activate local AI Agent Skills in external projects (consumer repos) by updating AGENTS.md and the local skills catalog.
 license: Apache-2.0
 metadata:
-  author: gpolanco
-  version: "1.0.0"
-  scope: [root]
-  auto_invoke: "Help me integrate skills"
+author: gpolanco
+version: "1.1.1"
+scope: [root]
+auto_invoke: "Help me integrate skills"
 allowed-tools: [Read, Write, Bash]
----
+----------------------------------
 
 # Skill Integrator ⚙️
 
-## 🚨 CRITICAL: Reference Files are MANDATORY
+## TL;DR (REQUIRED)
 
-**This SKILL.md provides OVERVIEW only. For EXACT patterns:**
+* This skill is used **ONLY in external projects (consumer repos)**.
+* Your job is to **activate already-downloaded skills** by updating **only**:
 
-| Task | MANDATORY Reading |
-|------|-------------------|
-| **Orchestration Workflow** | ⚠️ [reference/workflow.md](reference/workflow.md) |
+  * `AGENTS.md`
+  * `skills/README.md`
+* **DO NOT** modify any `SKILL.md` content.
+* **MUST** follow the exact orchestration process defined in:
 
-**⚠️ DO NOT integrate skills into a project without reading [workflow.md](reference/workflow.md) FIRST.**
-
----
-
-You are an expert in AI Agent Context management. Your goal is to help the user configure their "Skills" to guide AI assistants. All skills are already downloaded in the `skills/` directory.
-
-## ALWAYS
-
-- **Scan first**: Look at `package.json`, `README.md`, and project structure to identify the tech stack.
-- **Select relevant skills**: Browse the local `skills/` folder and identify which ones match the project's tech stack.
-- **Orchestrate**: Efficiently update `AGENTS.md` and `skills/README.md` to activate the chosen skills.
-- **Use remote templates**: You MUST fetch the raw content of these templates BEFORE any orchestration:
-  - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md`
-  - `https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md`
-- **Copy exactly**: Do not "summarize" or "improve" the template structure. Follow it strictly.
-
-## NEVER
-
-- **Import blindly**: Don't activate skills that conflict with existing project rules.
-- **Modify skill content**: Only update orchestration files (`AGENTS.md`, `skills/README.md`).
+  * `reference/workflow.md`
 
 ---
 
-## 🚫 Critical Anti-Patterns
+## 🚨 CRITICAL: Reference Workflow is Mandatory
 
-- **DO NOT** activate skills that conflict with project rules or existing tech stack decisions.
-- **DO NOT** "summarize" or "improve" the template structure → always fetch and follow the remote templates exactly.
-- **DO NOT** modify the content of individual skills → your role is orchestrating their usage, not editing their logic.
+This `SKILL.md` defines the contract and limits of the integrator.
 
----
+For **exact steps, ordering, and guardrails**, you **MUST** read and follow:
 
----
+* `reference/workflow.md`
 
-## 🚀 Orchestration Workflow
-
-### 1. Discovery
-
-Analyze the project's stack. Say:
-
-> "I've analyzed your project and found **Next.js**, **Zod**, and **Supabase**. I've identified the corresponding local skills in the `skills/` folder."
-
-### 2. Configuration
-
-Ask:
-
-> "Shall I update your `AGENTS.md` to activate these skills and enforce their patterns?"
-
-### 3. Wiring
-
-Update the project's orchestration:
-
-- **AGENTS.md**: Fetch and use the [remote template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/AGENTS.template.md) as your base. Fill placeholders, but do not change the table headers or structure.
-- **skills/README.md**: Fetch and use the [remote catalog template](https://raw.githubusercontent.com/gpolanco/skills-as-context/main/templates/SKILLS_README.template.md). List ALL local skills, marking the detected ones as "✅ Active" and others as "📦 Available".
+If the workflow is not followed exactly, **stop and ask for clarification**.
 
 ---
 
-## 📋 Integration Points
+## When to use
 
-| Feature            | Action                                                      |
-| :----------------- | :---------------------------------------------------------- |
-| **New Project**    | Run `init-agent.sh` and populate `AGENTS.md` placeholders.  |
-| **New Dependency** | Detect new lib (e.g., `zod`) and offer to import its skill. |
-| **Outdated Rules** | Browse the catalog for updates to existing skills.          |
+Use this skill **in external projects (consumer repos)** when the user asks to:
+
+* integrate or activate skills in a repository
+* set up or regenerate `AGENTS.md`
+* generate or sync `skills/README.md` as a catalog view
+* adopt skills after a stack change (e.g. added `zod`, `supabase`, `tailwind`)
+
+Do **NOT** use this skill to maintain or modify the **skills-as-context** repository itself.
 
 ---
 
-_See [reference/workflow.md](reference/workflow.md) for detailed implementation steps._
+## Outputs (what you are allowed to change)
+
+### ✅ Allowed modifications
+
+* `AGENTS.md`
+* `skills/README.md`
+
+### ❌ Not allowed
+
+* Any file under `skills/**/SKILL.md`
+* Any project source code or configuration files
+
+---
+
+## Core principles
+
+### ALWAYS
+
+* **Discover first**: inspect `package.json`, project `README.md`, and the directory structure.
+* **Select minimal, relevant skills**: only those that match the detected stack.
+* **Preserve project intent**: do not overwrite existing custom rules without surfacing them.
+* **Use canonical templates** (fetched as raw content):
+
+  * `templates/AGENTS.template.md`
+  * `templates/SKILLS_README.template.md`
+* **Copy templates exactly**: fill placeholders only, keep headings and table structures intact.
+
+### NEVER
+
+* Activate skills that clearly do not apply to the project.
+* Modify the content of individual `SKILL.md` files.
+* Invent new sections or rules outside the provided templates.
+
+---
+
+## Integration flow (high level)
+
+This skill orchestrates the integration but does **not** define the procedure inline.
+
+High-level phases:
+
+1. **Discovery** — detect stack, architecture, and skills directory.
+2. **Selection** — propose the minimal set of relevant skills.
+3. **Confirmation** — ask the user before writing any files.
+4. **Orchestration** — update `AGENTS.md` and `skills/README.md` using canonical templates.
+5. **Verification** — ensure paths, references, and catalogs are correct.
+
+> For the exact implementation steps, edge cases, and commands, always defer to `reference/workflow.md`.
